@@ -25,7 +25,7 @@ hold on;
 % 3-STANDARD DEVIATIONS FROM THE POSTERIOR VARIANCE 
 xHat_3sP = predicted_mean + 3 * predicted_std_dev;
 xHat_3sM = predicted_mean - 3 * predicted_std_dev;
-fill([time_vec, fliplr(2:k+1)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+fill([time_vec, fliplr(1:k)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
 
 % PLOT POSTERIOR MEAN
 plot(time_vec, predicted_mean, 'LineWidth', 1, Color = [0.8500 0.3250 0.0980]);
@@ -52,7 +52,7 @@ hold on;
 % 3-STANDARD DEVIATIONS FROM THE POSTERIOR VARIANCE 
 xHat_3sP = predicted_mean + 3 * predicted_std_dev;
 xHat_3sM = predicted_mean - 3 * predicted_std_dev;
-fill([time_vec, fliplr(2:k+1)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+fill([time_vec, fliplr(1:k)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
 
 % PLOT POSTERIOR MEAN
 plot(time_vec, predicted_mean, 'LineWidth', 1, Color = [0.8500 0.3250 0.0980]);
@@ -81,7 +81,7 @@ hold on;
 % 3-STANDARD DEVIATIONS FROM THE POSTERIOR VARIANCE 
 xHat_3sP = posterior_mean + 3 * posterior_std_dev;
 xHat_3sM = posterior_mean - 3 * posterior_std_dev;
-fill([time_vec_0, fliplr(1:k+1)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+fill([time_vec_0, fliplr(0:k)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
 
 % PLOT POSTERIOR MEAN
 plot(time_vec_0, posterior_mean, 'LineWidth', 1, Color = [0.8500 0.3250 0.0980]);
@@ -108,7 +108,7 @@ hold on;
 % 3-STANDARD DEVIATIONS FROM THE POSTERIOR VARIANCE 
 xHat_3sP = posterior_mean + 3 * posterior_std_dev;
 xHat_3sM = posterior_mean - 3 * posterior_std_dev;
-fill([time_vec_0, fliplr(1:k+1)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+fill([time_vec_0, fliplr(0:k)], [xHat_3sP, fliplr(xHat_3sM)], [0.7500 0.250 0.0880], 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
 
 % PLOT POSTERIOR MEAN
 plot(time_vec_0, posterior_mean, 'LineWidth', 1, Color = [0.8500 0.3250 0.0980]);
