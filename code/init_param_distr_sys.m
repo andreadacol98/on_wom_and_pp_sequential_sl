@@ -53,7 +53,7 @@ param_sys = struct;
 param_distr = struct;
 
 %% SYSTEM PARAMETERS
-param_sys.a = 0.5;            % stable scalar system
+param_sys.a = 0.75;            % stable scalar system
 param_sys.b = 1;
 param_sys.h = 1;
 param_sys.g = 1;
@@ -61,7 +61,7 @@ param_sys.g = 1;
 %% INITIAL STATE DISTRIBUTION (x(0) in paper)
 param_distr.state = struct;
 param_distr.state.mean = gen_rand_integer([-100, 100], seed); seed = seed + 1;
-param_distr.state.var = 10 * gen_rand_real(seed); seed = seed + 1;
+param_distr.state.var = 10; seed = seed + 1;
 
 %% PROCESS NOISE DISTRIBUTION (w in paper)
 param_distr.add_noise_w = struct;
@@ -80,7 +80,7 @@ param_distr.add_noise_v.var = zeros(m-1,1);
 
 for i = 1:m-1
     param_distr.add_noise_v.var(i,1) = 10 * gen_rand_real(seed);
-    % seed = seed + 1;
+    seed = seed + 1;
 end
 
 %% EQUIVALENT NOISE (n_k^(i) in paper)
