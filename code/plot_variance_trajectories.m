@@ -23,6 +23,13 @@ color_cell{1,2} = "#D95319";
 color_cell{1,3} = "#EDB120";
 color_cell{1,4} = "#7E2F8E";
 
+% COLOR CELL MATRIX
+color_mat = zeros(3,m);
+color_mat(1,:) = [0 0.4470 0.7410];
+color_mat(2,:) = [0.8500 0.3250 0.0980];
+color_mat(3,:) = [0.9290 0.6940 0.1250];
+color_mat(4,:) = [0.4940 0.1840 0.5560];
+
 %% PLOTTING PREDICTION VARIANCE OF CASCADE ARCHITECTURE
 figure(5);
 for j = 1:n_ic
@@ -32,6 +39,12 @@ for j = 1:n_ic
         hold on;
     end
 end
+
+% Fill the space in between
+for i = 1:m
+    fill([time_vec, fliplr(1:k)], [trajectories.cascade.predictions.var(i,2:end,end), fliplr(trajectories.cascade.predictions.var(i,2:end,1))], color_mat(i,:), 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+end
+
 hold off; grid on;
 
 % TITLE, LABELS, LEGEND
@@ -49,6 +62,12 @@ for j = 1:n_ic
         hold on;
     end
 end
+
+% Fill the space in between
+for i = m
+    fill([time_vec, fliplr(1:k)], [trajectories.WoM.predictions.var(i,2:end,end), fliplr(trajectories.WoM.predictions.var(i,2:end,1))], color_mat(i,:), 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+end
+
 hold off; grid on;
 
 % TITLE, LABELS, LEGEND
@@ -69,6 +88,12 @@ for j = 1:n_ic
         hold on;
     end
 end
+
+% Fill the space in between
+for i = 1:m
+    fill([time_vec_0, fliplr(0:k)], [trajectories.cascade.posteriors.var(i,1:end,end), fliplr(trajectories.cascade.posteriors.var(i,1:end,1))], color_mat(i,:), 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+end
+
 hold off; grid on;
 
 % TITLE, LABELS, LEGEND
@@ -86,6 +111,12 @@ for j = 1:n_ic
         hold on;
     end
 end
+
+% Fill the space in between
+for i = 1:m
+    fill([time_vec_0, fliplr(0:k)], [trajectories.WoM.posteriors.var(i,1:end,end), fliplr(trajectories.WoM.posteriors.var(i,1:end,1))], color_mat(i,:), 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+end
+
 hold off; grid on;
 
 % TITLE, LABELS, LEGEND
@@ -107,6 +138,12 @@ for j = 1:n_ic
         hold on;
     end
 end
+
+% Fill the space in between
+for i = 1:m
+    fill([time_vec, fliplr(1:k)], [trajectories.cascade.gain(i,2:end,end), fliplr(trajectories.cascade.gain(i,2:end,1))], color_mat(i,:), 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+end
+
 hold off; grid on;
 
 % TITLE, LABELS, LEGEND
@@ -124,6 +161,12 @@ for j = 1:n_ic
         hold on;
     end
 end
+
+% Fill the space in between
+for i = 1:m
+    fill([time_vec, fliplr(1:k)], [trajectories.WoM.gain(i,2:end,end), fliplr(trajectories.WoM.gain(i,2:end,1))], color_mat(i,:), 'FaceAlpha', 0.5, 'EdgeColor', 'none', 'HandleVisibility', 'off');
+end
+
 hold off; grid on;
 
 % TITLE, LABELS, LEGEND

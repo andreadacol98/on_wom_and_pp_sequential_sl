@@ -16,7 +16,7 @@ poly.positive_cfs = zeros(m, 2^m-1);
 
 for i = 1:m
 
-    % AGENT 1 HAS THE SIUMPLEST EXPRESSION
+    % AGENT 1 HAS THE SIMPLEST EXPRESSION
     if i == 1
         poly.gamma_cfs(1,end) = add_noise_e;
         poly.positive_cfs(1,end) = add_noise_e;
@@ -35,11 +35,14 @@ for i = 1:m
     end
 end
 
-%% POSITIVE COEFFCIENTS OF THE FIXED POINT ITERATION (of the predicted variance)
+%% POLYNOMIAL OF THE FIXED POINT ITERATION (of the predicted variance)
 pos_poly_last_agent = poly.positive_cfs(end,:);
-poly_1 = add_noise_w * [pos_poly_last_agent, 0, 0];                        % increase degree by 2 and multiply by process noise variance
-poly_2 = (A^2 - 1) * [0, pos_poly_last_agent, 0];                          % increase degree by 1 and multiply by (A^2 - 1) < 0
-poly_3 = zeros(1, length(poly_1)); poly_3(end-1:end) = [add_noise_w, -1];
+
+poly_1 = (1 - A^2) * [pos_poly_last_agent, 0];
+poly_2 = zeros(1, length(poly_1)); 
+poly_2(1, end - 2) = 1; 
+poly_2(1, end - 1) = -add_noise_w;
+poly_3 = - add_noise_w * [0, pos_poly_last_agent]; 
 
 % POLYNOMIAL OF THE FIXED POINT ITERATIONS (TO UNDERSTAND NUMBER OF POSITIVE ROOTS)
 poly.fixed_pts_cfs = poly_1 + poly_2 + poly_3;

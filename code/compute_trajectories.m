@@ -4,12 +4,11 @@ function [trajectories, param_distr] = compute_trajectories(param_distr, param_s
 % FROM PARAM CONSOLE
 k = param_console.k;
 m = param_console.m;
-posterior_0 = param_distr.state.var;
 
 %% NUMBER OF INITIAL CONDITONS (POSTERIORS) AND THEIR RANGE TO BE CONSIDERED
-n_ic = ceil(2*posterior_0);
+n_ic = 2;
 ic_min = 0;
-ic_max = n_ic;
+ic_max = 2;
 ic_vec = linspace(ic_min, ic_max, n_ic);
 
 %% DEFINE DATA STRUCTURES TO STORE THE TRAJECTORIES

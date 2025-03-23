@@ -60,7 +60,7 @@ for i = 1:m
 
     % A POSTERIORI UPDATE
     gain = prediction_var * H' * inv(H * prediction_var * H' + R);
-    posterior_var = (1 - gain * H) * prediction_var * (1 - gain * H)' + gain * R * gain';
+    posterior_var = (1 - gain * H) * prediction_var;
 
     % COMPUTE EQUIVALENT NOISE FOR SUBSEQUENT AGENTS
     if i < m
