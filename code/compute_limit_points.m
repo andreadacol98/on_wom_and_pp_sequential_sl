@@ -58,6 +58,5 @@ end
 
 %% WoM ARCHITECTURE
 % The limit point is obtained as the solution of a polynomial equuation of high degree
-limit_points.WoM.poly = compute_pos_poly_cfs(param_distr, param_sys, param_console);
 
 end

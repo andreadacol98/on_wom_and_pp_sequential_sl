@@ -16,15 +16,8 @@ time_vec_0 = 0:k;
 % LEGEND CELL ARRAY
 legend_cell = cell(1, m);
 
-% COLORS CELL ARRAY
-color_cell = cell(1,m); color_cell = {"#000000"};
-color_cell{1,1} = "#0072BD";
-color_cell{1,2} = "#D95319";
-color_cell{1,3} = "#EDB120";
-color_cell{1,4} = "#7E2F8E";
-
 % COLOR CELL MATRIX
-color_mat = zeros(3,m);
+color_mat = zeros(m,3);
 color_mat(1,:) = [0 0.4470 0.7410];
 color_mat(2,:) = [0.8500 0.3250 0.0980];
 color_mat(3,:) = [0.9290 0.6940 0.1250];
@@ -34,8 +27,8 @@ color_mat(4,:) = [0.4940 0.1840 0.5560];
 figure(5);
 for j = 1:n_ic
     for i = 1:m 
-        legend_cell{1,i} = sprintf('$$P_{k | k-1}^{(%d)}$$', i);
-        plot(time_vec, squeeze(trajectories.cascade.predictions.var(i,2:end,j)), '-o', MarkerFaceColor=color_cell{1,i}, Color=color_cell{1,i}, LineWidth=1.1, MarkerSize=2.5);
+        legend_cell{1,i} = sprintf('$$p_{k | k-1}^{(%d)}$$', i);
+        plot(time_vec, squeeze(trajectories.cascade.predictions.var(i,2:end,j)), '-o', MarkerFaceColor=color_mat(i,:), Color = color_mat(i,:), LineWidth=1.1, MarkerSize=2.5);
         hold on;
     end
 end
@@ -57,8 +50,8 @@ xlim([-inf, inf]); ylim([-inf, inf]);
 figure(6);
 for j = 1:n_ic
     for i = 1:m 
-        legend_cell{1,i} = sprintf('$$P_{k | k-1}^{(%d)}$$', i);
-        plot(time_vec, squeeze(trajectories.WoM.predictions.var(i,2:end,j)), '-o', MarkerFaceColor=color_cell{1,i}, Color=color_cell{1,i}, LineWidth=1.1, MarkerSize=2.5);
+        legend_cell{1,i} = sprintf('$$p_{k | k-1}^{(%d)}$$', i);
+        plot(time_vec, squeeze(trajectories.WoM.predictions.var(i,2:end,j)), '-o', MarkerFaceColor=color_mat(i,:), Color=color_mat(i,:), LineWidth=1.1, MarkerSize=2.5);
         hold on;
     end
 end
@@ -83,8 +76,8 @@ xlim([-inf, inf]); ylim([-inf, inf]);
 figure(7);
 for j = 1:n_ic
     for i = 1:m 
-        legend_cell{1,i} = sprintf('$$P_{k | k}^{(%d)}$$', i);
-        plot(time_vec_0, squeeze(trajectories.cascade.posteriors.var(i,:,j)), '-o', MarkerFaceColor=color_cell{1,i}, Color=color_cell{1,i}, LineWidth=1.1, MarkerSize=2.5);
+        legend_cell{1,i} = sprintf('$$p_{k | k}^{(%d)}$$', i);
+        plot(time_vec_0, squeeze(trajectories.cascade.posteriors.var(i,:,j)), '-o', MarkerFaceColor=color_mat(i,:), Color=color_mat(i,:), LineWidth=1.1, MarkerSize=2.5);
         hold on;
     end
 end
@@ -106,8 +99,8 @@ xlim([-inf, inf]); ylim([-inf, inf]);
 figure(8);
 for j = 1:n_ic
     for i = 1:m 
-        legend_cell{1,i} = sprintf('$$P_{k | k}^{(%d)}$$', i);
-        plot(time_vec_0, squeeze(trajectories.WoM.posteriors.var(i,:,j)), '-o', MarkerFaceColor=color_cell{1,i}, Color=color_cell{1,i}, LineWidth=1.1, MarkerSize=2.5);
+        legend_cell{1,i} = sprintf('$$p_{k | k}^{(%d)}$$', i);
+        plot(time_vec_0, squeeze(trajectories.WoM.posteriors.var(i,:,j)), '-o', MarkerFaceColor=color_mat(i,:), Color=color_mat(i,:), LineWidth=1.1, MarkerSize=2.5);
         hold on;
     end
 end
@@ -133,8 +126,8 @@ xlim([-inf, inf]); ylim([-inf, inf]);
 figure(9);
 for j = 1:n_ic
     for i = 1:m 
-        legend_cell{1,i} = sprintf('$$K_{k}^{(%d)}$$', i);
-        plot(time_vec, squeeze(trajectories.cascade.gain(i,2:end,j)), '-o', MarkerFaceColor=color_cell{1,i}, Color=color_cell{1,i}, LineWidth=1.1, MarkerSize=2.5);
+        legend_cell{1,i} = sprintf('$a_{k}^{(%d)}$', i);
+        plot(time_vec, squeeze(trajectories.cascade.gain(i,2:end,j)), '-o', MarkerFaceColor=color_mat(i,:), Color=color_mat(i,:), LineWidth=1.1, MarkerSize=2.5);
         hold on;
     end
 end
@@ -156,8 +149,8 @@ xlim([-inf, inf]); ylim([-inf, inf]);
 figure(10);
 for j = 1:n_ic
     for i = 1:m 
-        legend_cell{1,i} = sprintf('$$K_{k}^{(%d)}$$', i);
-        plot(time_vec, squeeze(trajectories.WoM.gain(i,2:end,j)), '-o', MarkerFaceColor=color_cell{1,i}, Color=color_cell{1,i}, LineWidth=1.1, MarkerSize=2.5);
+        legend_cell{1,i} = sprintf('$$a_{k}^{(%d)}$$', i);
+        plot(time_vec, squeeze(trajectories.WoM.gain(i,2:end,j)), '-o', MarkerFaceColor=color_mat(i,:), Color=color_mat(i,:), LineWidth=1.1, MarkerSize=2.5);
         hold on;
     end
 end
