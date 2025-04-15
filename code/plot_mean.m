@@ -20,6 +20,16 @@ color_mat(3,:) = [0.9290 0.6940 0.1250];
 color_mat(4,:) = [0.4940 0.1840 0.5560];
 color_mat(5,:) = [0.6350 0.0780 0.1840];
 
+%% FIGURE SETTINGS
+set(groot, 'defaultAxesTickLabelInterpreter','latex');
+set(groot, 'defaultTextInterpreter','latex');
+set(groot, 'defaultLegendInterpreter','latex');
+set(groot, 'DefaultAxesFontSize', 14);
+set(groot, 'DefaultTextFontSize', 25);                                     % Font size for axes labels and tick labels
+set(groot, 'DefaultLegendFontSize', 25);                                   % Font size for text elements (titles, labels)
+set(0, 'DefaultLegendLocation','Best');                                    % Font size for legend entries
+
+
 %% CASCADE - PLOT PREDICTED MEAN AND 3 STANDARD DEVIATIONS (only last agent)
 predicted_mean = param_distr.prediction.cascade.mean(end,2:end);
 predicted_std_dev = sqrt(param_distr.prediction.cascade.var(end,2:end));
@@ -36,7 +46,7 @@ hold on;
 plot(time_vec, state_true(2:end), 'LineWidth', 1.5, Color=color_mat(end,:));
 
 % PLOT POSTERIOR MEAN
-plot(time_vec, predicted_mean, 'LineWidth', 1.5, Color = color_mat(m,:) - [0.1,0.1,0.1]);
+plot(time_vec, predicted_mean, 'LineWidth', 1.5, Color = color_mat(m,:) ); %- [0.1,0.1,0.1]
 
 hold off; grid on;
 
@@ -46,6 +56,8 @@ hold off; grid on;
 ylabel("Private Prior Setup", Interpreter="latex");
 legend(["$$x_k$$", "$$\hat{x}_{k|k-1}^{3}$$"], Interpreter="latex", Location="best");
 xlim([-inf, inf]); ylim([-inf, inf]);
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 0.33, 0.30]);
+set(gcf,'color','w')
 
 
 %% WoM - PLOT PREDICTED MEAN AND 3 STANDARD DEVIATIONS (only last agent)
@@ -64,7 +76,7 @@ hold on;
 plot(time_vec, state_true(2:end), 'LineWidth', 1.5, Color=color_mat(end,:));
 
 % PLOT POSTERIOR MEAN
-plot(time_vec, predicted_mean, 'LineWidth', 1.5, Color = color_mat(m,:) - [0.1,0.1,0.1]);
+plot(time_vec, predicted_mean, 'LineWidth', 1.5, Color = color_mat(m,:) );  % - [0.1,0.1,0.1]
 
 hold off; grid on;
 
@@ -74,7 +86,8 @@ xlabel("Time $[k]$", Interpreter="latex");
 ylabel("WoM Setup", Interpreter="latex");
 legend(["$$x_k$$", "$$\hat{x}_{k|k-1}^{3}$$"], Interpreter="latex", Location="best");
 xlim([-inf, inf]); ylim([-inf, inf]);
-
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 0.33, 0.3125]);
+set(gcf,'color','w')
 
 
 
@@ -94,7 +107,7 @@ hold on;
 plot(time_vec_0, state_true, 'LineWidth', 1.5, Color=color_mat(end,:));
 
 % PLOT POSTERIOR MEAN
-plot(time_vec_0, posterior_mean, 'LineWidth', 1.5, Color = color_mat(m,:) - [0.1,0.1,0.1]);
+plot(time_vec_0, posterior_mean, 'LineWidth', 1.5, Color = color_mat(m,:) ); % - [0.1,0.1,0.1]
 
 hold off; grid on;
 
@@ -104,6 +117,8 @@ hold off; grid on;
 ylabel("Private Prior Setup", Interpreter="latex");
 legend(["$$x_k$$", "$$\hat{x}_{k|k}^{3}$$"], Interpreter="latex", Location="best");
 xlim([-inf, inf]); ylim([-inf, inf]);
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 0.33, 0.30]);
+set(gcf,'color','w')
 
 
 %% WoM - PLOT PREDICTED MEAN AND 3 STANDARD DEVIATIONS (only last agent)
@@ -122,7 +137,7 @@ hold on;
 plot(time_vec_0, state_true, 'LineWidth', 1.5, Color=color_mat(end,:));
 
 % PLOT POSTERIOR MEAN
-plot(time_vec_0, posterior_mean, 'LineWidth', 1.5, Color = color_mat(m,:) - [0.1,0.1,0.1]);
+plot(time_vec_0, posterior_mean, 'LineWidth', 1.5, Color = color_mat(m,:)); % - [0.1,0.1,0.1]
 
 hold off; grid on;
 
@@ -132,5 +147,7 @@ xlabel("Time $[k]$", Interpreter="latex");
 ylabel("WoM Setup", Interpreter="latex");
 legend(["$$x_k$$", "$$\hat{x}_{k|k}^{3}$$"], Interpreter="latex", Location="best");
 xlim([-inf, inf]); ylim([-inf, inf]);
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0.04, 0.33, 0.3125]);
+set(gcf,'color','w')
 
 end

@@ -5,23 +5,24 @@ m = param_console.m;
 
 %% DEFINE THE OUTPUT VARIABLE
 MSE = struct;
-MSE.posterior = struct;
-MSE.posterior.cascade = zeros(m,1);
-MSE.posterior.WoM = zeros(m,1);
+MSE.prediction = struct;
+MSE.prediction.cascade = zeros(m,1);
+MSE.prediction.WoM = zeros(m,1);
 
-%% COMPUTE THE MSE
+%% COMPUTE THE MSE (of the predictions!)
+state_true = state_true(2:end);
 n_samples = length(state_true);
 
 % LOOP OVER THE AGENTS
 for i = 1:m
 
     % CASCADE INTERCONNECTION
-    error = state_true - param_distr.posterior.cascade.mean(i,:);
-    MSE.posterior.cascade(i,1) = 1/n_samples *( error * error' );
+    error = state_true - param_distr.prediction.cascade.mean(i,2:end);
+    MSE.prediction.cascade(i,1) = 1/n_samples *( error * error' );
 
     % WoM INTERCONNECTION
-    error = (state_true - param_distr.posterior.WoM.mean(i,:));
-    MSE.posterior.WoM(i,1) = 1/n_samples *( error * error' );
+    error = (state_true - param_distr.prediction.WoM.mean(i,2:end));
+    MSE.prediction.WoM(i,1) = 1/n_samples *( error * error' );
     
 end
 

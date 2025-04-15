@@ -51,19 +51,9 @@ end
 % ONLINE UPDATE
 param_distr = online_Kalman_update_1(state_true, param_sys, param_distr, param_console);
 
-% Loop over time steps to get trajectory of mean
-% for k = 2:param_console.k + 1
-%     % Compute estimates
-%     param_distr = online_Kalman_update(k, state_true(1, k), param_sys, param_distr, param_console);
-%     % Update user of progress...
-%     if mod(k,10000) == 0
-%         fprintf("\n\tCURRENT ITERATION: %d",k)
-%     end
-% end
-
 %% COMPUTE MEAN SQUARE ERROR FOR ALL AGENTS
 MSE = compute_MSE(state_true, param_distr, param_console);
 
 %% PLOT THE POSTERIOR MEAN (CASCADE and WoM)
-fprintf("\nPLOT ONE TRAJECTORY OF POSTERIOR MEAN");
-plot_mean(state_true, param_distr, param_console);
+%fprintf("\nPLOT ONE TRAJECTORY OF POSTERIOR MEAN");
+%plot_mean(state_true, param_distr, param_console);

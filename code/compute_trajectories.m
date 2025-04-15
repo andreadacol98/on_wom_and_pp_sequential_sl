@@ -8,7 +8,7 @@ m = param_console.m;
 %% NUMBER OF INITIAL CONDITONS (POSTERIORS) AND THEIR RANGE TO BE CONSIDERED
 n_ic = 2;
 ic_min = 0;
-ic_max = 2;
+ic_max = 3;
 ic_vec = linspace(ic_min, ic_max, n_ic);
 
 %% DEFINE DATA STRUCTURES TO STORE THE TRAJECTORIES
