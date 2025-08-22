@@ -27,12 +27,12 @@ git clone https://github.com/andreadacol98/on_wom_and_pp_sequential_sl.git
 The code is organised so  the user only needs to run `main_simulation.m`.
 The problem parameters will be inserted (from keyboard) in command window after the start of the program (a simple example on how to do this i provided in a later section).
 
-Here is an high-level description of the MATLAB files in this repository:
+Here is an high-level description of the **MATLAB** files in this repository:
 
 | File              | Description                                      |
 |-------------------|--------------------------------------------------|
-| `main_simulation.m`       | Main script to reproduce the simulations in the paper. |
-| `clear_para_distr.m`      | Sets the data structure `param_distr` to its default initialization, as specified in `init_param_distr_sys.m`. |
+| `main.m`                  | Main script to reproduce the simulations in the paper. |
+| `clear_param_distr.m`     | Sets the data structure `param_distr` to its default initialization, as specified in `init_param_distr_sys.m`. |
 | `compute_MSE.m`           | Computes the mean-squared error (MSE). |
 | `compute_limit_points.m`  | Compute the limit points for the predictive variance, Kalman gains, and posterior variance as the result of Discrete Algebraic Riccati equations (DAREs), for the PP framework. |
 | `compute_trajectories.m`  | Computes the trajectories of the predictive variance, Kalman gain, and posterior variance for both the PP and WoM settings. |
@@ -43,4 +43,34 @@ Here is an high-level description of the MATLAB files in this repository:
 | `offline_Kalman_update.m` | Performs the deterministic updates (i.e., variances and gain), that can therefore be carryed offline. |
 | `online_Kalman_update.m`  | Performs the updates that depend on online data (i.e., mean estimates). |
 | `plot_mean.m`             | Plots the time trajectory of the predictive and posterior estimates, for both PP and WoM. |
-| `plot_variance_trajectories.m`         | Plots the time trajectory of the predictive and posterior variances and gains, for both PP and WoM. |
+| `plot_mean.m`             | Plots the time trajectory of the predictive and posterior estimates, for both PP and WoM, for one initial condition. |
+| `plot_variance_trajectories.m`         | Plots the time trajectory of the predictive and posterior variances and gains, for both PP and WoM, for several initial conditions, thus highlighhting convergence to the unique positive fixed point. |
+
+
+## Usage
+The same numerical examples of [🔗 On Word-of-Mouth and Private-Prior Sequential Social Learning](https://arxiv.org/abs/2504.02913) is considered, in order to show how the code is successfully run:
+- Add the repository to your **MATLAB** path
+- Run `main.m`
+  - The user is then asked to insert the desired problem parameters by the command window (shown below), from keyboard:
+  
+  ```matlab
+  [PROGRAM STARTS] ON WORD-OF-MOUTH AND PRIVATE_PRIOR SEQUENTIAL SOCIAL LEARNING
+
+  INSERT THE FOLLOWING PARAMETERS FROM KEYBOARD:
+      Number of filters: 3
+      Number of time-steps: 10
+  ```
+  - The user is then updated on the current state of the program by the command window:
+ 
+  ```matlab
+  INITIALIZING PARAMETERS FOR SOCIAL LEARNING...
+  PERFORM OFFLINE COMPUTATIONS...
+  COMPUTE LIMIT POINTS...
+  PLOT VARIANCE TRAJECTORY FOR SEVERAL INITIAL CONDITIONS...
+  PERFORM ONLINE COMPUTATIONS...
+  PLOT ESTIMATES TRAJECTORY...
+  >>
+  ```
+
+- The plots should be aligned with those provided in the link above.
+ 
