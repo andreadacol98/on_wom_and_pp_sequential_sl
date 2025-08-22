@@ -28,8 +28,8 @@ fprintf("\nCOMPUTE LIMIT POINTS");
 limit_points = compute_limit_points(param_distr, param_sys, param_console);
 
 %% PLOT THE POSTERIOR VARIANCE (CASCADE and WoM)
-% fprintf("\nPLOT ONE TRAJECTORY OF POSTERIOR VARIANCE");
-% plot_variance(param_distr, param_console);
+fprintf("\nPLOT ONE TRAJECTORY OF POSTERIOR VARIANCE (FOR THE GIVEN INITIAL CONDITIONS OF THE FILTER)");
+plot_variance(param_distr, param_console);
 
 %% PLOT UNIQUENESS OF FIXED POINTS (Cascade and WoM)
 fprintf("\nPLOT TRAJECTORY FOR SEVERAL INITIAL CONDITIONS");
@@ -55,5 +55,5 @@ param_distr = online_Kalman_update_1(state_true, param_sys, param_distr, param_c
 MSE = compute_MSE(state_true, param_distr, param_console);
 
 %% PLOT THE POSTERIOR MEAN (CASCADE and WoM)
-%fprintf("\nPLOT ONE TRAJECTORY OF POSTERIOR MEAN");
-%plot_mean(state_true, param_distr, param_console);
+fprintf("\nPLOT ONE TRAJECTORY OF POSTERIOR MEAN");
+plot_mean(state_true, param_distr, param_console);
